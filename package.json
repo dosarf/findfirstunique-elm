@@ -1,0 +1,29 @@
+{
+  "name": "findfirstunique-elm",
+  "version": "1.0.0",
+  "description": "Elm app, finding first unique in collection",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "material-components-elm-js-imports": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dosarf/findfirstunique-elm.git"
+  },
+  "keywords": [
+    "Elm"
+  ],
+  "author": "dosarf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dosarf/findfirstunique-elm/issues"
+  },
+  "homepage": "https://github.com/dosarf/findfirstunique-elm#readme"
+}
