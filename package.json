@@ -6,12 +6,24 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {
-    "material-components-elm-js-imports": "^1.3.0"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "dev": "webpack-dev-server --mode development --port 3000",
+    "errors": "webpack --mode development --display-error-details"
+  },
+  "dependencies": {
+    "elm-webpack-loader": "^5.0.0",
+    "material-components-elm-js-imports": "^1.3.0",
+    "webpack": "^4.33.0",
+    "webpack-dev-server": "^3.7.1",
+    "file-loader": "1.1.10",
+    "loader-utils": "1.1.0"
+  },
+  "devDependencies": {
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "webpack-cli": "^3.3.3"
   },
   "repository": {
     "type": "git",

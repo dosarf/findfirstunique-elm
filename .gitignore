@@ -6,3 +6,5 @@ repl-temp-*
 main.js
 # node
 node_modules
+# webpack
+dist

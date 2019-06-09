@@ -6,4 +6,8 @@ elm make src/Main.elm --output main.js
 elm-test
 
 ## TODO
-Figure out how to use https://github.com/aforemny/elm-mdc
+* Figure out how to use https://github.com/aforemny/elm-mdc
+* or https://package.elm-lang.org/packages/achutkiran/material-components-elm/latest/
+** see also https://github.com/achutkiran/material-components-elm
+
+Could this be useful
