@@ -21,8 +21,6 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        // This is what you need in your own work
-        // loader: "elm-webpack-loader",
         loader: 'elm-webpack-loader',
         options: {
           debug: true
@@ -31,6 +29,18 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: 'src',
+              debug: true
+            }
+          }
+        ]
       }
     ]
   },
