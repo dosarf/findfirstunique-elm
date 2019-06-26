@@ -1,9 +1,17 @@
 var path = require('path');
 
 module.exports = {
-  // If your entry-point is at "src/index.js" and
-  // your output is in "/dist", you can ommit
-  // these parts of the config
+
+  entry: {
+    require_material_components_elm_js_imports: './src/require_material_components_elm_js_imports.js',
+    index: './src/index.js'
+  },
+
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+
   module: {
     rules: [{
         test: /\.html$/,
