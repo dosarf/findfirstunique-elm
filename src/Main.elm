@@ -2,34 +2,47 @@ module Main exposing (main)
 
 import Browser
 import Css exposing (Color, border3, borderColor, borderRadius, display, height, hex, hover, inlineBlock, padding, px, rgb, solid, width)
-import Html.Styled exposing (Html, div, header, img, main_, text, toUnstyled)
+import FindFirstUniqueTab
+import Html.Styled exposing (Html, div, header, img, main_, map, text, toUnstyled)
 import Html.Styled.Attributes exposing (css, src)
+import IncrementDecrementTab
 import Mwc.Button
+import Mwc.Tabs
 import Mwc.TextField
 
 
 type alias Model =
-    { count : Int }
+    { currentTab : Int
+    , incDecModel : IncrementDecrementTab.Model
+    , findFirstUniqueModel : FindFirstUniqueTab.Model
+    }
 
 
 initialModel : Model
 initialModel =
-    { count = 0 }
+    { currentTab = 0
+    , incDecModel = IncrementDecrementTab.initialModel
+    , findFirstUniqueModel = FindFirstUniqueTab.initialModel
+    }
 
 
 type Msg
-    = Increment
-    | Decrement
+    = SelectTab Int
+    | IncDecMsg IncrementDecrementTab.Msg
+    | FindFirstUniqueMsg FindFirstUniqueTab.Msg
 
 
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Increment ->
-            { model | count = model.count + 1 }
+        SelectTab newTab ->
+            { model | currentTab = newTab }
 
-        Decrement ->
-            { model | count = model.count - 1 }
+        IncDecMsg incDecMsg ->
+            { model | incDecModel = IncrementDecrementTab.update incDecMsg model.incDecModel }
+
+        FindFirstUniqueMsg findFirstUniqueMsg ->
+            { model | findFirstUniqueModel = FindFirstUniqueTab.update findFirstUniqueMsg model.findFirstUniqueModel }
 
 
 {-| A plain old record holding a couple of theme colors.
@@ -70,17 +83,30 @@ view model =
             [ div
                 []
                 [ logo ]
-            , div
-                []
-                [ text "Inc- and decrement a number" ]
             ]
         , div
-            [ css [ width (px 300) ] ]
-            [ Mwc.TextField.view [ Mwc.TextField.readonly True, Mwc.TextField.label <| String.fromInt model.count ]
-            , Mwc.Button.view [ Mwc.Button.raised, Mwc.Button.onClick Increment, Mwc.Button.label "increment" ]
-            , Mwc.Button.view [ Mwc.Button.raised, Mwc.Button.onClick Decrement, Mwc.Button.label "decrement" ]
+            [ css [ width (px 400) ] ]
+            [ Mwc.Tabs.view
+                [ Mwc.Tabs.selected model.currentTab
+                , Mwc.Tabs.onClick SelectTab
+                , Mwc.Tabs.tabText
+                    [ text "Inc/Dec"
+                    , text "Find 1st unique"
+                    ]
+                ]
+            , tabContentView model
             ]
         ]
+
+
+tabContentView : Model -> Html Msg
+tabContentView model =
+    case model.currentTab of
+        0 ->
+            map IncDecMsg (IncrementDecrementTab.view model.incDecModel)
+
+        _ ->
+            map FindFirstUniqueMsg (FindFirstUniqueTab.view model.findFirstUniqueModel)
 
 
 main =
