@@ -1,13 +1,26 @@
+
 # findfirstunique-elm
-Practice Elm app, that happens to search for first unique string in a collection
+Sample SPA webapp
 
-## Notes
-elm make src/Main.elm --output main.js
-elm-test
+- example for Elm itself
+- example config webpack + elm-webpack-loader
+- example usage material-components (multiple tabs)
+- one tab (app) is standard Elm increase/decrease
+- other is finding first unique item in a list of strings
 
-## TODO
-* Figure out how to use https://github.com/aforemny/elm-mdc
-* or https://package.elm-lang.org/packages/achutkiran/material-components-elm/latest/
-** see also https://github.com/achutkiran/material-components-elm
+## Installation
 
-Could this be useful
+Install
+- node and npm
+- Elm 0.19
+- elm-test (with npm)
+- `npm install`
+- (maybe) `elm make src/Main.elm --output temp.html`
+	- to get Elm packages pulled in, CHECK: is this necessary?
+- `npm run build`
+- built app distribution is under `dist/`
+
+## Testing
+
+Run `elm test`
+- TODO broken at the moment, dependency `achutkiran/material-components-elm` messes it up
