@@ -23,4 +23,3 @@ Install
 ## Testing
 
 Run `elm test`
-- TODO broken at the moment, dependency `achutkiran/material-components-elm` messes it up
